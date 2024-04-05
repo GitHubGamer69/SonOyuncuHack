@@ -1,0 +1,70 @@
+﻿@model Urun
+
+@{
+	Layout = "_LayoutAdmin";
+}
+
+<div class="content-wrapper">
+	<!-- Content -->
+
+	<div class="container-xxl flex-grow-1 container-p-y">
+		<h4 class="py-3 mb-4">Ürünler</h4>
+
+		<div class="row">
+			<!-- Float label (Outline) -->
+			<div class="col-md-6">
+				<div class="card mb-4">
+					<h5 class="card-header">Ürün Ekle</h5>
+					<div class="card-body pt-4">
+						@{
+							if (ViewBag.sonuc != null)
+							{
+								<div class="alert alert-success" role="alert">@ViewBag.sonuc</div>
+							}
+						}
+						<form asp-controller="AdminUrun" asp-action="EkleGuncelle" method="post">
+							<input type="hidden" asp-for="Id" />
+							<input type="hidden" asp-for="KategoriId" />
+							<input type="hidden" asp-for="Gorsel" />
+							<input type="hidden" asp-for="Goruntuleme" />
+							<input type="hidden" asp-for="Tarih" />
+							<input type="hidden" asp-for="Onay" />
+							<div>
+								<label asp-for="KategoriId" class="form-label">Ürün Kategorisi</label>
+								<select class="form-select" asp-items="ViewBag.urunler" asp-for="KategoriId"></select>
+							</div>
+							<div class="mt-3">
+								<label asp-for="Adi" class="form-label">Ürün Adı</label>
+								<input asp-for="Adi" class="form-control" placeholder="Ürün Adı" />
+							</div>
+							<div class="mt-3">
+								<label asp-for="Fiyat" class="form-label">Ürün Fiyatı</label>
+								<input asp-for="Fiyat" class="form-control" placeholder="Ürün Fiyatı" />
+							</div>
+							<div class="mt-3">
+								<label asp-for="Indirim" class="form-label">Ürün İndirimi</label>
+								<input asp-for="Indirim" class="form-control" placeholder="Ürün İndirimi" />
+							</div>
+							<div class="mt-3">
+								<label asp-for="Adet" class="form-label">Ürün Adeti</label>
+								<input asp-for="Adet" class="form-control" placeholder="Ürün Adeti" />
+							</div>
+							<div class="mt-3">
+								<label for="formFile" class="form-label">Ürün Görseli</label>
+								<input class="form-control" type="file" id="formFile">
+							</div>
+							<div class="mt-3">
+								<label asp-for="Aciklama" class="form-label">Ürün Açıklaması</label>
+								<textarea asp-for="Aciklama" class="form-control" placeholder="Ürün Açıklaması" rows="5"></textarea>
+							</div>
+							<div class="mt-3">
+								<button type="submit" class="btn rounded-pill btn-success">Ekle</button>
+								<a href="/AdminUrun/Index" class="btn rounded-pill btn-danger">İptal</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

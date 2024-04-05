@@ -1,0 +1,42 @@
+﻿@{
+	Layout = "_LayoutAdmin";
+}
+@model List<Kategori>
+
+<div class="content-wrapper">
+	<div class="container-xxl flex-grow-1 container-p-y">
+		<h4 class="py-3 mb-4">Kategori</h4>
+		<div class="card">
+			<div class="d-flex justify-content-between">
+				<h5 class="card-header">Kategoriler</h5>
+				<a href="/AdminKategori/EkleGuncelle" class="btn rounded-pill btn-primary mt-3 me-3 mb-1">+ Yeni Kayıt</a>
+			</div>
+			<div class="table-responsive text-nowrap">
+				<table class="table table-borderless">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Ad</th>
+							<th>#</th>
+						</tr>
+					</thead>
+					<tbody>
+						@{
+							foreach (var item in Model)
+							{
+								<tr>
+									<td>@item.Id</td>
+									<td>@item.Ad</td>
+									<td>
+										<a class="dropdown-item" href="/adminkategori/ekleguncelle/@item.Id"><i class="mdi mdi-pencil-outline me-1"></i> Güncelle</a>
+										<a class="dropdown-item" href="/adminkategori/sil/@item.Id"><i class="mdi mdi-trash-can-outline me-1"></i> Sil</a>
+									</td>
+								</tr>
+							}
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
